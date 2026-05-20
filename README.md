@@ -24,9 +24,6 @@ El repositorio se encuentra organizado de manera modular para garantizar la repr
 ├── 📁 data/
 │   └── Datos_IDEAM_Tibaitata_2015_SEQUIA_AJUSTADA.xlsx  # Serie agroclimática histórica base
 │
-├── 📁 dependencies/                 # Toolkit y librerías externas requeridas
-│   └── casadi-3.7.2-windows64-matlab2018b.zip  # Binarios oficiales de CasADi
-│
 ├── 📁 references/                  # Biblioteca digital de soporte (Formatos PDF)
 │   └── [Listado de archivos PDF indexados según la bibliografía oficial]
 │
@@ -41,11 +38,11 @@ Para recrear con éxito las simulaciones y el entrenamiento de las redes en su m
 
 1. Directorio de Trabajo Único: Asegúrese de colocar el archivo de datos Excel (Datos_IDEAM_Tibaitata_2015_SEQUIA_AJUSTADA.xlsx) dentro del mismo directorio de trabajo de MATLAB desde el cual va a ejecutar los scripts de la línea correspondiente (o configure correctamente el Current Folder de MATLAB). Los scripts leen este archivo de forma local; si no se encuentra en la misma ruta de ejecución, el programa arrojará un error de lectura de archivo.
 
-2. Configuración de Dependencias (CasADi): El repositorio incluye el toolkit de optimización necesario en la carpeta /dependencies. Para utilizarlo:
+2. Configuración de Dependencias (CasADi): Debido a las restricciones de tamaño de almacenamiento en GitHub, los binarios del toolkit no se incluyen directamente en este repositorio. Para replicar el entorno:
 
-    Descomprima el archivo casadi-3.7.2-windows64-matlab2018b.zip en su máquina local.
-
-    Al abrir el Script 1 o el Script 3 de cualquiera de las dos líneas, asegúrese de modificar la primera línea de código (addpath(genpath('...'))) colocando la ruta física absoluta de la carpeta que acaba de extraer para que MATLAB pueda importar CasADi e IPOPT correctamente.
+    - Descargue la versión exacta utilizada en este proyecto desde el sitio oficial de GitHub de CasADi: CasADi v3.7.2 (Releases).
+    - Seleccione el paquete adecuado para su sistema operativo (para este desarrollo se utilizó específicamente casadi-3.7.2-windows64-matlab2018b.zip).
+    - Descomprima el archivo en su máquina local y configure la ruta absoluta de esa carpeta en la primera línea de los Scripts 1 y 3 (addpath(genpath('...'))) para habilitar los solvers de IPOPT.
 
 3. Orden de Ejecución Obligatorio (Pipeline): Para cualquiera de las dos líneas de investigación, los scripts deben correrse en el siguiente orden jerárquico:
 
